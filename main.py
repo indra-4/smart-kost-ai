@@ -91,6 +91,9 @@ app.add_middleware(
 
 
 @app.get("/")
+@app.get("/api")
+@app.get("/api/index")
+@app.get("/api/index.py")
 def home():
     return {
         "status": "online",
@@ -122,6 +125,7 @@ def _resolve_db_key(id_kost: str) -> str:
 
 
 @app.get("/api/rekomendasi/semua")
+@app.get("/rekomendasi/semua")
 def get_semua_rekomendasi():
     """
     Endpoint untuk menghitung rute A* dan skor Fuzzy Sugeno untuk seluruh kos yang ada di db_kos.
@@ -185,6 +189,7 @@ def get_semua_rekomendasi():
 
 
 @app.get("/api/rekomendasi/{id_kost}")
+@app.get("/rekomendasi/{id_kost}")
 def get_rekomendasi(id_kost: str):
     """
     Endpoint utama rekomendasi kost tunggal:
@@ -248,6 +253,7 @@ def get_rekomendasi(id_kost: str):
 
 
 @app.get("/api/rute/{id_kost}")
+@app.get("/rute/{id_kost}")
 def get_rute(id_kost: str):
     """
     Endpoint khusus untuk mencari rute terpendek saja (A*).
